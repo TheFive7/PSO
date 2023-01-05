@@ -1,0 +1,15 @@
+# PSO - Particle Swarm Optimization
+
+# Particule :
+# X: position actuelle
+# V : vitesse
+# Pb : personal best location
+# Pg : team best location
+# f(Pb) : f(PBEST)
+# f(Pg) : f(GBEST)
+
+# V(t+1) = w * V(t) + C1 * r1 * (Pb(t) - X (t)) + C2 * r2 * (Pg(t) - X (t))
+# X (t+1) = X (t) + V(t+1)
+# C1 & C2 : deux constantes représentant le coeff d'acceleration
+# r1 & r2 : deux nombres aléatoires tirés de l'intervalle [0, 1]
+# w: constante fixee au debut (poids d'inertie)
