@@ -164,7 +164,7 @@ class PSO:
                 if cost_p < cost_func(global_best):
                     particle[1] = particle[0]
                     global_best = particle[1]
-                    #print("GB UPDATE: ", global_best, "     => VALUE: ", cost_func(global_best))
+                    # print("GB UPDATE: ", global_best, "     => VALUE: ", cost_func(global_best))
 
             # UPDATE INERTIA WEIGHT
             #w += 10 ** -5
@@ -188,8 +188,8 @@ class PSO:
                 trial_individual = particle
 
             # only valid solutions will be saved
-            if type(cost_p) is float:
 
+            if type(cost_p) is float:
                 function_evaluations = function_evaluations + 1
                 if save_results:
                     dump_results(save_directory, trial_individual, cost_func(global_best), function_evaluations, False)

@@ -19,19 +19,19 @@ def rosenbrock(x):
 
 
 def rastrigin(x):
-    A = 10
-    n = len(x)
-    return A * n + np.sum([x_i**2 - A * np.cos(2 * np.pi * x_i) for x_i in x])
+    cost = 0.0
+    for i in range(len(x) - 1):
+        cost += (x[i]**2 - 10 * np.cos(2 * np.pi * x[i])) + (x[i + 1]**2 - 10 * np.cos(2 * np.pi * x[i + 1])) + 20
+    return cost
 
 
 def weierstrass(x):
-    a = 0.5
-    b = 3
-    k_max = 20
-    result = 0
-    for k in range(k_max+1):
-        result += a**k * np.cos(2 * np.pi * b**k * x)
-    return result
+    cost = 0.0
+    a = 3
+    b = 0.5
+    for n in range(len(x) - 1):
+        cost += (a ** n) * np.cos((b ** n) * np.pi * x[n])
+    return cost
 
 def michalewicz(x):
     m = 10
@@ -51,17 +51,15 @@ def griewank(x):
 
 def ackley(x):
     d = len(x)
-    sum_sq = 0
-    sum_cos = 0
-    for i in range(d):
-        sum_sq += x[i] ** 2
-        sum_cos += np.cos(2 * np.pi * x[i])
-    return -20 * np.exp(-0.2 * np.sqrt(sum_sq / d)) - np.exp(sum_cos / d) + 20 + np.e
+    sum = 0
+    for i in range(len(x) - 1):
+        sum += -20 * np.exp(-0.2 * np.sqrt(0.5 * (x[i] ** 2 + x[i + 1] ** 2))) - np.exp(0.5 * (np.cos(2 * np.pi * x[i]) + np.cos(2 * np.pi * x[i + 1]))) + 20 + np.e
+    return sum
 
 def schwefel(x):
     d = len(x)
-    sum_sq = 0
-    for i in range(d):
-        sum_sq += x[i] * np.sin(np.sqrt(np.abs(x[i])))
-    return 418.9829 * d - sum_sq
+    sum = 0
+    for i in range(d - 1):
+        sum += x[i] * np.sin(np.sqrt(np.abs(x[i])))
+    return 420.9687 * (d - 1) - sum
 

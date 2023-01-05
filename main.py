@@ -11,12 +11,12 @@ from pso.Cost_function import schwefel
 
 dimension = 30
 
-bounds = [(-10, 10) for i in range(dimension)]
+bounds = [(-500, 500) for i in range(dimension)]
 
-args = dict(cost_func=sphere, dimension=len(bounds), bounds=bounds, max_evaluations=30000, display=True, save_results=True, tol=10 ** -16)
+args = dict(cost_func=schwefel, dimension=len(bounds), bounds=bounds, max_evaluations=30000, display=True, save_results=True, tol=10 ** -16)
 
 num_runs = 20
 
 for i in range(num_runs):
-     PSO(**args, save_directory='results/PSO_'+str(i))
+     PSO(**args, save_directory='schwefel/PSO_'+str(i))
 
