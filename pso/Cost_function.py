@@ -34,11 +34,11 @@ def weierstrass(x):
     return cost
 
 def michalewicz(x):
+    som = 0.0
     m = 10
-    sum = 0
     for i in range(len(x)):
-        sum += np.sin(x[i]) * (np.sin((i + 1) * x[i] ** 2 / np.pi)) ** (2 * m)
-    return -sum
+        som += np.sin(x[i]) * pow(np.sin((i * pow(x[i], 2)) / np.pi), (2 * m))
+    return -som
 
 def griewank(x):
     sum = 0
